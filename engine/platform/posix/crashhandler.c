@@ -85,6 +85,8 @@ static void Sys_Crash( int signal, siginfo_t *si, void *context)
 	void *pc = (void*)ucontext->uc_mcontext.pc, **bp = (void*)ucontext->uc_mcontext.regs[29], **sp = (void*)ucontext->uc_mcontext.sp;
 #elif defined(__arm__)
 	void *pc = (void*)ucontext->uc_mcontext.arm_pc, **bp = (void*)ucontext->uc_mcontext.arm_fp, **sp = (void*)ucontext->uc_mcontext.arm_sp;
+#elif defined (__riscv) || defined(__riscv__)
+	void *pc = (void*)ucontext->uc_mcontext.__gregs[REG_PC], **bp = (void*)ucontext->uc_mcontext.__gregs[REG_S0], **sp = (void*)ucontext->uc_mcontext.__gregs[REG_SP];
 #else
 #error "Unknown arch!!!"
 #endif

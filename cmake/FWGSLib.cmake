@@ -361,6 +361,12 @@ set(archdetect_c_code "
 		#else
 		#error cmake_ARCH ppc
 		#endif
+#elif defined(__riscv) || defined(__riscv__)
+	#if __riscv_xlen == 64
+	#error cmake_ARCH riscv64
+	#else
+	#error cmake_ARCH riscv32
+	#endif
 #endif
 
 #error cmake_ARCH unknown

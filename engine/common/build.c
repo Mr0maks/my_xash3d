@@ -117,6 +117,10 @@ const char *Q_buildarch( void )
 	archname = "arm";
 #elif defined __mips__
 	archname = "mips";
+#elif __riscv_xlen == 32
+	archname = "riscv32";
+#elif __riscv_xlen == 64
+	archname = "riscv64";
 #else
 #error "Place your architecture name here! If this is a mistake, try to fix conditions above and report a bug"
 #endif
