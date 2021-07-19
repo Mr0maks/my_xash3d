@@ -1,0 +1,6 @@
+extraction:
+  cpp:
+    configure:
+      command: "cmake -DXASH_64BIT=1"
+    index:
+      build_command: "make -j2"
